@@ -1,0 +1,318 @@
+<div class="index-page">
+  <div class="hero-section">
+    <div class="hero-animation">
+      <lottie-player
+        src="https://assets5.lottiefiles.com/packages/lf20_w51pcehl.json"
+        background="transparent"
+        speed="1"
+        style="width: 200px; height: 200px; margin: 0 auto"
+        loop
+        autoplay
+      >
+      </lottie-player>
+    </div>
+
+    {% if has_page_title %}
+    <h1 class="hero-title">{{ page_title }}</h1>
+    {% endif %} {% if has_description %}
+    <p class="hero-description">{{ description }}</p>
+    {% endif %}
+
+    <div class="hero-body">{{ yocaml_body | safe }}</div>
+  </div>
+
+  <section class="articles-section">
+    <h2 class="section-title">Latest Articles</h2>
+
+    {% if articles %}
+    <div class="articles-grid">
+      {% for article in articles %}
+      <article class="article-card">
+        <div class="card-icon">
+          <lottie-player
+            src="https://assets9.lottiefiles.com/packages/lf20_uwR49r.json"
+            background="transparent"
+            speed="1"
+            style="width: 60px; height: 60px"
+            loop
+            autoplay
+          >
+          </lottie-player>
+        </div>
+
+        <h3 class="card-title">
+          <a href="{{ article.url }}">{{ article.title }}</a>
+        </h3>
+
+        <time class="card-date" datetime="{{ article.date.repr.date }}">
+          {{ article.date.repr.date }}
+        </time>
+
+        {% if article.has_description %}
+        <p class="card-description">{{ article.description }}</p>
+        {% endif %} {% if article.has_tags %}
+        <div class="card-tags">
+          {% for tag in article.tags %}
+          <span class="card-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <a href="{{ article.url }}" class="card-link"> Read more <span class="arrow">→</span> </a>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-articles">
+      <lottie-player
+        src="https://assets4.lottiefiles.com/packages/lf20_uu0x8lqv.json"
+        background="transparent"
+        speed="1"
+        style="width: 150px; height: 150px; margin: 0 auto"
+        loop
+        autoplay
+      >
+      </lottie-player>
+      <p>No articles yet. Check back soon!</p>
+    </div>
+    {% endif %}
+  </section>
+</div>
+
+<style>
+  .hero-section {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    animation: fadeInUp 0.8s ease-out;
+  }
+
+  .hero-animation {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    background: linear-gradient(135deg, var(--apple-blue), var(--apple-purple), var(--apple-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleSlide 1s ease-out;
+  }
+
+  @keyframes titleSlide {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-description {
+    font-size: 1.5rem;
+    color: var(--apple-gray);
+    max-width: 600px;
+    margin: 0 auto var(--spacing-lg);
+    animation: fadeIn 1.2s ease-out;
+  }
+
+  .hero-body {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto;
+    animation: fadeIn 1.4s ease-out;
+  }
+
+  .articles-section {
+    margin-top: var(--spacing-xl);
+    animation: fadeInUp 1s ease-out 0.3s both;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--apple-dark);
+    position: relative;
+  }
+
+  .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--apple-blue), var(--apple-purple));
+    margin: var(--spacing-sm) auto 0;
+    border-radius: 2px;
+  }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+  }
+
+  .article-card {
+    background: var(--apple-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    animation: cardSlideIn 0.6s ease-out backwards;
+  }
+
+  .article-card:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  .article-card:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .article-card:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  .article-card:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  .article-card:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  .article-card:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes cardSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .article-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--apple-blue), var(--apple-purple));
+    transform: scaleX(0);
+    transition: var(--transition-smooth);
+  }
+
+  .article-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .article-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .card-icon {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card-title a {
+    text-decoration: none;
+    color: var(--apple-dark);
+    transition: var(--transition-fast);
+  }
+
+  .card-title a:hover {
+    color: var(--apple-blue);
+  }
+
+  .card-date {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--apple-gray);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card-description {
+    color: #666;
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .card-tag {
+    background: var(--apple-light-gray);
+    color: var(--apple-gray);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--apple-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-fast);
+  }
+
+  .card-link .arrow {
+    transition: var(--transition-fast);
+  }
+
+  .card-link:hover {
+    gap: var(--spacing-sm);
+  }
+
+  .card-link:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .no-articles {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--apple-gray);
+  }
+
+  .no-articles p {
+    font-size: 1.25rem;
+    margin-top: var(--spacing-md);
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-description {
+      font-size: 1.125rem;
+    }
+
+    .articles-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

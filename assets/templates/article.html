@@ -1,0 +1,44 @@
+<article class="article-page">
+  <header class="article-header">
+    <div class="article-header-animation">
+      <lottie-player
+        src="https://assets10.lottiefiles.com/packages/lf20_v1yudlrx.json"
+        background="transparent"
+        speed="1"
+        style="width: 120px; height: 120px; margin: 0 auto"
+        loop
+        autoplay
+      >
+      </lottie-player>
+    </div>
+
+    <h1 class="article-title">{{ title }}</h1>
+
+    <div class="article-meta">
+      <time class="article-date" datetime="{{ date.repr.date }}">
+        📅 {{ date.repr.datetime }}
+      </time>
+
+      {% if has_tags %}
+      <div class="article-tags">
+        {% for tag in tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    {% if has_description %}
+    <p class="article-description">{{ description }}</p>
+    {% endif %}
+  </header>
+
+  <div class="article-content">{{ yocaml_body | safe }}</div>
+
+  <footer class="article-footer">
+    <a href="/" class="back-link">
+      <span class="back-arrow">←</span>
+      <span>Back to all articles</span>
+    </a>
+  </footer>
+</article>

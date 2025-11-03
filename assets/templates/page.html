@@ -1,0 +1,9 @@
+<div class="page-content">
+  {% if has_page_title %}
+  <h1 class="page-title">{{ page_title }}</h1>
+  {% endif %} {% if has_description %}
+  <p class="page-description">{{ description }}</p>
+  {% endif %}
+
+  <div class="page-body">{{ yocaml_body | safe }}</div>
+</div>
