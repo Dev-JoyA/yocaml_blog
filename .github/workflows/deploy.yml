@@ -44,7 +44,7 @@ jobs:
         run: |
           eval $(opam env)
           dune build --profile=release
-          dune exec joy_blog
+          dune exec joy_blog -- --output _www 
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
