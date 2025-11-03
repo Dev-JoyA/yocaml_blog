@@ -5,6 +5,8 @@ date: 2025-11-03
 tags: [introduction, blog]
 ---
 
+<link rel="stylesheet" href="../style.css">
+
 # Hello World!
 
 This is my **first article** on this blog. Stay tuned for more content!
