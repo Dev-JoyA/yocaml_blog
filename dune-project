@@ -7,6 +7,13 @@
  (name joy_blog)
  (synopsis "Joy's Beautiful Apple-themed Blog")
  (description "A static blog generated with YOCaml")
+ (maintainers "Joy Aruku <joy.gold13@gmail.com>")
+ (authors "Joy Aruku")
+ (homepage "https://github.com/Dev-JoyA/yocaml_blog")
+ (bug_reports "https://github.com/Dev-JoyA/yocaml_blog/issues")
+ (license "MIT")
+ (documentation "https://dev-joya.github.io/yocaml_blog")
+ (source (github Dev-JoyA/yocaml_blog))
  (depends
   (ocaml (>= 5.3.0))
   (yocaml (>= 2.5.0))
