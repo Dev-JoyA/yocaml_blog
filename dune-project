@@ -1,6 +1,6 @@
 (lang dune 3.0)
 (name joy_blog)
-(version 17cbb66-dirty)
+(version 3ff454a-dirty)
 (generate_opam_files true)
 
 (package
@@ -14,7 +14,7 @@
   cmarkit 
   hilite
   textmate-language
-  (yocaml_markdown (= 2.6.0))
+  (yocaml_markdown (= 2.5.0))
   (yocaml_yaml (>= 2.5.0))
   (yocaml_jingoo (>= 2.5.0))
   (yocaml_syndication (>= 2.0.0))))
