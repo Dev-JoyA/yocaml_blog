@@ -52,7 +52,7 @@ When I'm not coding, you'll find me:
 
 ## Let's Connect!
 
-I'm always excited to connect with fellow developers, especially those interested in functional programming. Feel free to reach out through the [contact page](/contact.html) or follow my work on GitHub.
+I'm always excited to connect with fellow developers, especially those interested in functional programming. Feel free to reach out through the [contact page](./contact.html) or follow my work on GitHub.
 
 ---
 
