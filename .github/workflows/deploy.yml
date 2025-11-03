@@ -36,6 +36,7 @@ jobs:
         run: |
           opam update
           opam install yocaml yocaml_unix yocaml_yaml yocaml_markdown yocaml_jingoo yocaml_syndication --yes
+          opam install hilite --yes
           opam install . --deps-only --with-doc --with-test
           eval $(opam env)
       
