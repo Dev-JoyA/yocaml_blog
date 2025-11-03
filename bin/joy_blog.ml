@@ -152,7 +152,8 @@ module Feed = struct
       "Joy Aruku"
       
   let authors = Nel.singleton owner
-let article_to_entry (url, article) =
+
+  let article_to_entry (url, article) =
     let open Yocaml.Archetype in
     let open Yocaml_syndication in
     let page = Article.page article in
