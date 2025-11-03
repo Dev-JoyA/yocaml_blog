@@ -18,7 +18,7 @@ A stunning, modern static blog built with [YOCaml](https://github.com/xhtmlboi/y
 - 🎯 **SEO Optimized** - Semantic HTML and meta tags
 - 🌈 **Smooth Scrolling** - Delightful navigation experience
 
-## 📁 Project Structure
+## 📁Project Structure
 
 ```
 yocaml_blog/
