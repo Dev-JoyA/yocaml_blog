@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: "5.3.0"
+          dune-cache: true
+          opam-depext-flags: --with-test
+      
+      - name: Install dependencies
+        run: |
+          opam update
+          opam install yocaml yocaml_unix yocaml_yaml yocaml_markdown yocaml_jingoo yocaml_syndication --yes
+          opam install . --deps-only --with-doc --with-test
+          eval $(opam env)
+      
+      - name: Build site
+        run: |
+          eval $(opam env)
+          dune build --profile=release
+          dune exec joy_blog
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./_www"
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
