@@ -35,9 +35,12 @@ jobs:
       - name: Install dependencies
         run: |
           opam update
-          opam install yocaml yocaml_unix yocaml_yaml yocaml_markdown yocaml_jingoo yocaml_syndication --yes
+          # FORCE 2.5.0 FIRST — THIS IS CRITICAL
+          opam install yocaml_markdown.2.5.0 --yes
+          # Now install the rest (will respect joy_blog.opam)
+          opam install yocaml yocaml_unix yocaml_yaml yocaml_jingoo yocaml_syndication --yes
           opam install hilite --yes
-          opam install . --deps-only --with-doc --with-test
+          opam install . --deps-only --with-doc --with-test --yes
           eval $(opam env)
       
       - name: Build site
