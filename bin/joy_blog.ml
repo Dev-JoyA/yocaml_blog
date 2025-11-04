@@ -1,5 +1,6 @@
 open Yocaml
 
+let base_url = "/yocaml_blog"
 let www = Path.rel [ "_www" ]
 let assets = Path.rel [ "assets" ]
 let content = Path.rel [ "content" ]
@@ -94,9 +95,12 @@ let create_articles =
 
 let compute_link source =
   let into = Path.abs [ "articles" ] in
-  source 
-  |> Path.move ~into 
-  |> Path.change_extension "html"
+  let path =
+    source
+    |> Path.move ~into
+    |> Path.change_extension "html"
+  in
+  Path.(rel [base_url] / Path.to_string path)
 
 let fetch_articles = 
   Archetype.Articles.fetch 
