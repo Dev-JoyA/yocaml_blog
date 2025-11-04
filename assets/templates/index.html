@@ -41,7 +41,7 @@
         </div>
 
         <h3 class="card-title">
-          <a href="yocaml_blog{{ article.url }}">{{ article.title }}</a>
+          <a href="{{ article.url }}">{{ article.title }}</a>
         </h3>
 
         <time class="card-date" datetime="{{ article.date.repr.date }}">
@@ -58,7 +58,7 @@
         </div>
         {% endif %}
 
-        <a href="yocaml_blog{{ article.url }}" class="card-link"> Read more <span class="arrow">→</span> </a>
+        <a href="{{ article.url }}" class="card-link"> Read more <span class="arrow">→</span> </a>
       </article>
       {% endfor %}
     </div>
