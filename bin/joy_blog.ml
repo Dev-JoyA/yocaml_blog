@@ -94,13 +94,13 @@ let create_articles =
   Batch.iter_files ~where articles create_article
 
 let compute_link source =
-  let into = Path.rel [ "articles" ] in
-  let path =
+  let article_filename = 
     source
-    |> Path.move ~into
-    |> Path.change_extension "html"
+    |> Path.basename
+    |> Option.map (fun name -> Filename.chop_extension name ^ ".html")
+    |> Option.value ~default:"article.html"
   in
-  Path.(rel [base_url] / Path.to_string path)
+  Path.(rel [base_url; "articles"; article_filename])
 
 let fetch_articles = 
   Archetype.Articles.fetch 
