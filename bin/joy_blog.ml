@@ -142,7 +142,7 @@ let create_index =
 module Feed = struct
   let path = "atom.xml"
   let title = "Joy's Beautiful Apple-themed Blog"
-  let site_url = "https://github.com/Dev-JoyA/yocaml_blog"
+  let site_url = "https://Dev-JoyA.github.io/yocaml_blog"
   let feed_description = "My personal blog using YOCaml"
   
   let owner = 
