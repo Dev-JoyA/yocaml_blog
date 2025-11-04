@@ -62,7 +62,7 @@ yocaml_blog/
 └── README.md                  # This file
 ```
 
-## 🚀 Quick Start
+## 🚀Quick Start
 
 ### Prerequisites
 
