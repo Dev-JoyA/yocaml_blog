@@ -94,7 +94,7 @@ let create_articles =
   Batch.iter_files ~where articles create_article
 
 let compute_link source =
-  let into = Path.abs [ "articles" ] in
+  let into = Path.rel [ "articles" ] in
   let path =
     source
     |> Path.move ~into
