@@ -27,6 +27,13 @@ jobs:
           dune-cache: true
           opam-depext-flags: --with-test
 
+      - name: Cache opam switch
+        uses: actions/cache@v4
+        with:
+          path: ~/.opam
+          key: opam-$$ {{ runner.os }}- $${{ hashFiles('*.opam') }}
+          restore-keys: opam-${{ runner.os }}-
+
       - name: Install cmark-gfm 
         run: |
           sudo apt-get update -y
