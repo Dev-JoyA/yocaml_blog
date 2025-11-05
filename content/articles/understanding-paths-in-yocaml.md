@@ -124,20 +124,6 @@ Base path: /yocaml_blog automatically added
 dune exec joy_blog -- server  # Sometimes has path issues
 ```
 
-### The Reliable Python Method
-```bash
-# Build the site
-dune exec joy_blog -- --output _www
-
-# Test exactly what will be deployed
-cd _www
-python3 -m http.server 8000
-
-# Now test: http://localhost:8000/articles/my-first-article.html
-```
-
-**Why This Matters:** The Python server serves files exactly as they exist in your `_www` directory, giving you a perfect preview of your production environment.
-
 ## Key Lessons for Yocaml Developers
 
 ### 1. Never Hardcode Base URLs in Path Generation
