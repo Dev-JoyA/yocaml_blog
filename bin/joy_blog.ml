@@ -19,6 +19,12 @@ let track_binary =
   |> Yocaml.Path.from_string
   |> Pipeline.track_file
 
+(* DEBUG: Add debug logging *)
+let debug_log msg =
+  let open Task in
+  let+ () = track_binary in
+  Printf.eprintf "DEBUG: %s\n%!" msg
+
 let copy_images =
   let images_path = Path.(www / "images")
   and where = with_ext [ "svg"; "png"; "jpg"; "gif" ] in
@@ -45,6 +51,7 @@ let create_page source =
   let pipeline =
     let open Task in
     let+ () = track_binary
+    and+ () = debug_log ("Creating page: " ^ Path.to_string source)
     and+ apply_templates = 
       Yocaml_jingoo.read_templates 
         Path.[ templates / "page.html"
@@ -73,6 +80,7 @@ let create_article source =
   let pipeline =
     let open Task in
     let+ () = track_binary
+    and+ () = debug_log ("Creating article: " ^ Path.to_string source ^ " -> " ^ Path.to_string article_path)
     and+ templates =
       Yocaml_jingoo.read_templates
         Path.[ templates / "article.html"
@@ -118,6 +126,7 @@ let create_index =
   let pipeline =
     let open Task in
     let+ () = track_binary
+    and+ () = debug_log "Creating index page"
     and+ templates =
       Yocaml_jingoo.read_templates
         Path.
@@ -151,7 +160,7 @@ module Feed = struct
   let owner = 
     Yocaml_syndication.Person.make 
       ~uri:site_url 
-      ~email:"joy.gold13@gmail.com"  (* Fixed double @ *)
+      ~email:"joy.gold13@gmail.com"
       "Joy Aruku"
       
   let authors = Nel.singleton owner
@@ -198,6 +207,7 @@ let create_feed =
   and pipeline =
     let open Task in
     let+ () = track_binary
+    and+ () = debug_log "Creating feed"
     and+ articles = fetch_articles in
     articles 
     |> Feed.make 
@@ -218,8 +228,16 @@ let program () =
   >>= Action.store_cache cache
 
 let () =
+  Printf.eprintf "=== Yocaml Blog Build ===\n";
+  Printf.eprintf "WWW path: %s\n" (Path.to_string www);
+  Printf.eprintf "Content path: %s\n" (Path.to_string content);
+  Printf.eprintf "Articles path: %s\n" (Path.to_string articles);
+  Printf.eprintf "Templates path: %s\n" (Path.to_string templates);
+  Printf.eprintf "Expected article URLs: http://localhost:8000/articles/article-name.html\n\n";
+  
   match Sys.argv.(1) with
   | "server" -> 
+    Printf.eprintf "Starting server at http://localhost:8000/\n";
     Yocaml_unix.serve 
        ~level:`Info 
        ~target:www 

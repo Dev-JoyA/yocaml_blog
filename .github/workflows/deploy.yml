@@ -1,8 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (Debug)
 
 on:
   push:
-    branches: [main]
+    branches: [debug]
 
 permissions:
   contents: read
@@ -26,6 +26,13 @@ jobs:
           ocaml-compiler: "5.3.0"
           dune-cache: true
           opam-depext-flags: --with-test
+
+      - name: Cache opam switch
+        uses: actions/cache@v4
+        with:
+          path: ~/.opam
+          key: opam-${{ runner.os }}-${{ hashFiles('*.opam') }}
+          restore-keys: opam-${{ runner.os }}-
 
       - name: Install cmark-gfm 
         run: |
@@ -57,3 +64,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
