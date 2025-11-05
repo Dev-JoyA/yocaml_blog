@@ -109,7 +109,7 @@ let fetch_articles =
     (module Yocaml_yaml)
     articles
 
-let create_index =
+let create_index = 
   let source = Path.(content / "index.md") in
   let index_path =
     source 
