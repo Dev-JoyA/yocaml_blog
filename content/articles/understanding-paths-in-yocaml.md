@@ -117,13 +117,6 @@ Base path: /yocaml_blog automatically added
 <!-- This correctly goes to https://dev-joya.github.io/yocaml_blog/index.html -->
 ```
 
-## Testing Strategy: Why Python Server Saved Me
-
-### The Yocaml Local Server Quirk
-```bash
-dune exec joy_blog -- server  # Sometimes has path issues
-```
-
 ## Key Lessons for Yocaml Developers
 
 ### 1. Never Hardcode Base URLs in Path Generation
