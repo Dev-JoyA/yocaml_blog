@@ -1,6 +1,5 @@
 open Yocaml
 
-let base_url = "/yocaml_blog"
 let www = Path.rel [ "_www" ]
 let assets = Path.rel [ "assets" ]
 let content = Path.rel [ "content" ]
@@ -100,7 +99,7 @@ let compute_link source =
     |> Option.map (fun name -> Filename.chop_extension name ^ ".html")
     |> Option.value ~default:"article.html"
   in
-  Path.(rel [base_url; "articles"; article_filename])
+  Path.(rel ["articles"; article_filename])
 
 let fetch_articles = 
   Archetype.Articles.fetch 
@@ -152,7 +151,7 @@ module Feed = struct
   let owner = 
     Yocaml_syndication.Person.make 
       ~uri:site_url 
-      ~email:"joy.gold13@@gmail.com" 
+      ~email:"joy.gold13@gmail.com"  (* Fixed double @ *)
       "Joy Aruku"
       
   let authors = Nel.singleton owner
@@ -164,17 +163,13 @@ module Feed = struct
     let title = Article.title article
     and content_url = 
       site_url ^ Path.to_string url
-      
     and updated = 
       Datetime.make (Article.date article)
-      
     and categories = 
       List.map Category.make (Page.tags page)
-      
     and summary = 
       Option.map Atom.text (Page.description page) 
     in
-    
     let links =
       [ Atom.alternate content_url ~title ] 
     in
