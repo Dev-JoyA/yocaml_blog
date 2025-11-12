@@ -5,6 +5,8 @@ date: 2025-11-05
 tags: [yocaml, static-sites, github-pages, paths, deployment]
 ---
 
+<link rel="stylesheet" href="../style.css">
+
 # Understanding Paths in Yocaml: My Journey from Broken Links to a Working Blog
 
 ## The Problem That Cost Me Days
@@ -264,4 +266,4 @@ Now if you'll excuse me, I have a blog to deploy. And this time, the links actua
 
 ---
 
-*P.S. Big thanks to @xvw for patiently explaining this to me about five times until it finally clicked. The documentation is great, but sometimes you just need someone to tell you "no really, read section 2.3 again."*
+*P.S. Big thanks to @xvw for patiently explaining this to me about five times until it finally clicked. The documentation is great, but sometimes you just need someone to tell you "no really, read section 2.3 again."* 
