@@ -94,10 +94,14 @@ let create_articles resolver =
    The key fix: compute_link now uses Path.move instead of basename
    This follows the YOCaml documentation approach
 *)
+<<<<<<< HEAD
 let compute_link resolver source =
   source
   |> Resolver.Target.article resolver ~source
   |> Resolver.Server.from_target resolver
+=======
+let compute_link resolver source = Resolver.Server.article_link resolver ~source
+>>>>>>> b2fc66b (fixed path issues)
 
 let fetch_articles resolver =
   Archetype.Articles.fetch ~where:is_markdown
@@ -135,7 +139,6 @@ let create_index resolver =
   Action.Static.write_file index_path pipeline
 
 module Feed = struct
-  let path = "atom.xml"
   let title = "Joy's Beautiful Apple-themed Blog"
   let site_url = "https://Dev-JoyA.github.io/yocaml_blog"
   let feed_description = "My personal blog using YOCaml"

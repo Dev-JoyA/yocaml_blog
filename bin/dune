@@ -1,3 +1,4 @@
 (executable
  (public_name joy_blog)
- (libraries yocaml yocaml_unix yocaml_yaml yocaml_markdown yocaml_jingoo yocaml_syndication))
+ (libraries yocaml yocaml_unix yocaml_yaml yocaml_markdown yocaml_jingoo yocaml_syndication)
+ (modules resolver joy_blog))
