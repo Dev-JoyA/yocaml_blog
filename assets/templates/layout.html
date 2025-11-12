@@ -7,7 +7,7 @@
     {% if description %}
     <meta name="description" content="{{ description }}" />
     {% endif %}
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="/yocaml_blog/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,16 +22,16 @@
     <nav class="navbar">
       <div class="nav-container">
         <div class="nav-logo">
-          <a href="/">
+          <a href="/yocaml_blog/">
             <span class="logo-icon">✨</span>
             <span>Joy's Blog</span>
           </a>
         </div>
         <ul class="nav-menu">
-           <li><a href="/yocaml_blog/" class="nav-link">Home</a></li>
-          <li><a href="./about.html" class="nav-link">About</a></li>
-          <li><a href="./contact.html" class="nav-link">Contact</a></li>
-          <li><a href="./atom.xml" class="nav-link">RSS</a></li>
+          <li><a href="/yocaml_blog/" class="nav-link">Home</a></li>
+          <li><a href="/yocaml_blog/about.html" class="nav-link">About</a></li>
+          <li><a href="/yocaml_blog/contact.html" class="nav-link">Contact</a></li>
+          <li><a href="/yocaml_blog/atom.xml" class="nav-link">RSS</a></li>
         </ul>
       </div>
     </nav>
@@ -53,7 +53,7 @@
           >
           </lottie-player>
         </div>
-        <p class="footer-text">Made with <span class="heart">♥</span> using YOCaml</p>
+        <p class="footer-text">Made with <span class="heart">♥️</span> using YOCaml</p>
         <p class="footer-copyright">&copy; 2025 Joy Aruku. All rights reserved.</p>
       </div>
     </footer>
@@ -78,7 +78,7 @@
       document.querySelectorAll('.nav-link').forEach((link) => {
         if (
           link.getAttribute('href') === currentPath ||
-          (currentPath === '/' && link.getAttribute('href') === '/')
+          (currentPath === '/yocaml_blog/' && link.getAttribute('href') === '/yocaml_blog/')
         ) {
           link.style.color = 'var(--apple-blue)';
           link.style.background = 'rgba(0, 122, 255, 0.1)';
