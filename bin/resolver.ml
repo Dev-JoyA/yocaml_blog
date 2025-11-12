@@ -43,8 +43,8 @@ end
 module Server = struct
   let server { server_root; _ } = server_root
 
-  let from_target r path =
-    let prefix = Target.target r in
-    let into = server r in
-    path |> Path.trim ~prefix |> Path.relocate ~into
+  (* Compute server URL for an article *)
+  let article_link r ~source =
+    let into = Path.(server r / "articles") in
+    source |> Path.move ~into |> Path.change_extension "html"
 end

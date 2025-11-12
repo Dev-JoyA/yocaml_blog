@@ -94,14 +94,7 @@ let create_articles resolver =
    The key fix: compute_link now uses Path.move instead of basename
    This follows the YOCaml documentation approach
 *)
-<<<<<<< HEAD
-let compute_link resolver source =
-  source
-  |> Resolver.Target.article resolver ~source
-  |> Resolver.Server.from_target resolver
-=======
 let compute_link resolver source = Resolver.Server.article_link resolver ~source
->>>>>>> b2fc66b (fixed path issues)
 
 let fetch_articles resolver =
   Archetype.Articles.fetch ~where:is_markdown
